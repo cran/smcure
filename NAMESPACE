@@ -1,0 +1,5 @@
+export(coefsmcure)
+export(plotpredictsmcure)
+export(predictsmcure)
+export(printsmcure)
+export(smcure)
