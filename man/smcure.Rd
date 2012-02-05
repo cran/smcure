@@ -1,13 +1,15 @@
 \name{smcure}
 \alias{smcure}
 \title{
-semiparametric mixture cure model
+Semiparametric mixture cure model
 }
 \description{
-Fit semiparametric mixture PH cure model or AFT cure model
+Fit semiparametric PH mixture cure model or AFT mixture cure model by the EM algorithm
 }
 \usage{
-smcure(formula, cureform, offset = NULL, data, na.action = na.omit, model = c("aft", "ph"), link = "logit", Var = TRUE, emmax = 50, eps = 1e-07, nboot = 100)
+smcure(formula, cureform, offset = NULL, data, na.action = na.omit, 
+	model = c("aft", "ph"), link = "logit", Var = TRUE, 
+	emmax = 50, eps = 1e-07, nboot = 100)
 }
 \arguments{
   \item{formula}{
@@ -27,7 +29,7 @@ a missing-data filter function. By default na.action = na.omit. }
 specifies your model, it can be  "ph" or "aft"
 }
   \item{link}{
-specifies the link in incidence part. The logit, probit or complementary loglog (cloglog) links are available. By default the logistic regression model is assumed link = "logit".
+specifies the link in incidence part. The "logit", "probit" or complementary loglog ("cloglog") links are available. By default link = "logit".
 }
   \item{Var}{
 If it is TRUE, the program returns Std.Error by bootstrap method. If set to False, the program only returns estimators of coefficients. By default, Var = TRUE
@@ -41,16 +43,37 @@ sets the convergence criterion. The default is eps = 1e-7. The iterations are co
 specifies the number of bootstrap sampling. The default nboot = 100.
 }
 }
-\details{
-None}
+
 \value{
-See print.smcure for returned values
+See \code{printsmcure} for returned values
 }
-\references{
-J. Zhang and Y. Peng. A new estimation method for the semiparametric accelerated
-failure time mixture cure model. Statistics in medicine, 26(16):3157-3171, 2007\\
-J.P. Sy and J.M.G. Taylor. Estimation in a cox proportional hazards cure model. Bio-
-metrics, 56(1):227-236, 2000}
+
 
 \seealso{
-print.smcure, predict.smcure, plot.predict.smcure}
+\code{printsmcure}, \code{predictsmcure}, \code{plotpredictsmcure}}
+
+\examples{
+data(e1684)
+# fit PH mixture cure model
+pd <- smcure(Surv(FAILTIME,FAILCENS)~TRT+SEX+AGE,cureform=~TRT+SEX+AGE,
+     data=e1684,model="ph",Var = FALSE)
+printsmcure(pd,Var = FALSE)
+
+# plot predicted survival curves for male with median centered age by treatment groups
+predm=predictsmcure(pd,newX=cbind(c(1,0),c(0,0),c(0.579,0.579)),
+     newZ=cbind(c(1,0),c(0,0),c(0.579,0.579)),model="ph")
+plotpredictsmcure(predm,model="ph")
+
+
+data(bmt)
+# fit AFT mixture cure model
+bmtfit <- smcure(formula = Surv(Time, Status) ~ TRT, cureform = ~TRT, data = bmt, 
+    model = "aft", Var = FALSE)
+printsmcure(bmtfit,Var = FALSE)
+
+# plot predicted Survival curves by treatment groups
+predbmt=predictsmcure(bmtfit,newX=c(0,1),newZ=c(0,1),model="aft")
+plotpredictsmcure(predbmt,model="aft")
+}
+
+\keyword{mainfunction}

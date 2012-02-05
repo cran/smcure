@@ -5,18 +5,23 @@
 Bone marrow transplant study
 }
 \description{
-Bone marrow transplant study used for modeling AFT semicure model}
+Bone marrow transplant study for the refractory acute lymphoblastic leukemia patients which is widely used in the AFTMC model (Kersey, et al., 1987)}
 \usage{data(bmt)}
 \format{
-  A data frame with 91 observations on the following 3 variables.
+ There were 90 patients in total, where 46 patients in the allogeneic treatment group and 44 patients in the autologous treatment group
   \describe{
-    \item{\code{Time}}{a numeric vector}
-    \item{\code{Status}}{a numeric vector}
-    \item{\code{TRT}}{a numeric vector}
+    \item{\code{Time}}{ 
+time to death
+}
+    \item{\code{Status}}{
+censoring indicator, 1=event of interest happens, and 0=censoring
+}
+    \item{\code{TRT}}{
+1 for autologous treatment group; 0 for allogeneic treatment group
+}
   }
 }
-\examples{
-data(bmt)
-## maybe str(bmt) ; plot(bmt) ...
-}
+
+
+
 \keyword{datasets}
