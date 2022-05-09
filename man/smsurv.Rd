@@ -4,16 +4,17 @@
 Estimation of the baseline survival
 }
 \description{
-The estimated baseline survival function based on the Breslow method, which is used in order to update the E-step in the EM algorithm.}
+This R-program uses the Breslow method to estimate baseline survival of PH mixture cure model and AFT mixture cure model.
+}
 \usage{
 smsurv(Time, Status, X, beta, w, model)
 }
 \arguments{
   \item{Time}{
-this is the follow up time for "ph" model. If model is "aft", then this is residual \eqn{\log t-\bm{\beta} \mathbf x}.
+this is the follow up time for "ph" model. If model is "aft", then this is residual.
 }
   \item{Status}{
-censoring indicator, 1=event of interest happens, and 0=censoring
+The status indicator, normally 0=alive, 1=dead
 }
   \item{X}{
 effects of covariates of uncured patients

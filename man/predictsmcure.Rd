@@ -3,7 +3,7 @@
 \title{
 prediction of semicure model}
 \description{
-Prediction of survival probability from the \code{smcure} in order to pass subjects to \code{plotpredictsmcure()}.}
+Prediction of semicure model}
 \usage{
 predictsmcure(object, newX, newZ, model = c("ph", "aft"), ...)
 }
@@ -22,10 +22,6 @@ further arguments to be passed to the predictsmcure function}
 }
 \details{
 Predicted population survival function can be calculated by the following equation
-\deqn{\hat S_{pop}(t)=\hat \pi+(1-\hat \pi)\hat S(t)
+\deqn{S_{pop}(t)=\pi+(1-\pi)*S(t)
  }
-where \eqn{\hat S(t)} is the estimated survival function for the uncured patients based on the PH or AFT model.
 }
-
-\seealso{
-\code{smcure}, \code{printsmcure}, \code{plotpredictsmcure}}

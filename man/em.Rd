@@ -4,7 +4,7 @@
 \title{
 EM algorithm}
 \description{
-EM algorithm used in the mixture cure model by assuming a latent indicator of uncure status. Detailed estimation methods can be found in the reference section.}
+EM algorithm used in the mixture cure model by assuming a latent indicator of uncure. Detailed estimation methods can be found in the reference section}
 \usage{
 em(Time, Status, X, Z, offsetvar, b, beta, model, link, emmax, eps)
 }
@@ -12,13 +12,13 @@ em(Time, Status, X, Z, offsetvar, b, beta, model, link, emmax, eps)
   \item{Time}{
 time to event of interest}
   \item{Status}{
-censoring indicator, 1=event of interest happens, and 0=censoring
+status indicator, 0=alive, 1=dead
 }
   \item{X}{
-a vector or matrix of covariates corresponding to the latency part
+a vector or matrix of covariates corresponding to latency part
 }
   \item{Z}{
-a vector or matrix of covariates corresponding to the incidence part
+a vector or matrix of covariates corresponding to incidence part
 }
   \item{offsetvar}{
 offset variable }

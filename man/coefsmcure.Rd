@@ -4,16 +4,16 @@
 Retrieves the estimated coefficients from object
 }
 \description{
-Retrieving coefficients from a smcure object. 
+Retrieving coefficients, printing method, and summary mthod for a smcure object. 
 }
 \usage{
-coefsmcure(x,...) 
+coefsmcure(x,...)
 }
 \arguments{
   \item{x}{
 an object from smcure function
 }
  \item{\dots}{
-further arguments to be passed to the \code{printsmcure} function.
+Further arguments to be passed to the printsmcure function.
 }
 }

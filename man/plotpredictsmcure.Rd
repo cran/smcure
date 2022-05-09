@@ -4,11 +4,12 @@
 Plot predicted smcure object
 }
 \description{
-Plot predicted survival curve(s) from the estimated mixture cure model
+plot predicted survival curve(s) from the estimated mixture cure model
 }
 \usage{
-plotpredictsmcure(object, type = "S", xlab = "Time", 
-ylab = "Predicted Survival Probability", model = c("ph", "aft"), ...)
+plotpredictsmcure(object, type = "S", xlab = "Time",
+ylab = "Predicted Survival Probability",
+model = c("ph", "aft"), ...)
 }
 \arguments{
    \item{object}{
@@ -26,9 +27,5 @@ a label for the y axis
   \item{model}{
 either "ph" or "aft"}
  \item{\dots}{
-further options in plotfunction can be passed to the \code{plotpredictsmcure} function}
+Further options in plotfunction can be passed to the plotpredictsmcure function}
 }
-
-\seealso{
-\code{smcure}, \code{printsmcure}, \code{predictsmcure}}
-

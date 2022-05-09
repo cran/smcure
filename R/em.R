@@ -28,7 +28,7 @@ function(Time,Status,X,Z,offsetvar,b,beta,model,link,emmax,eps)
 	if(!is.null(offsetvar)) update_beta <- coxph(Surv(Time, Status)~X[,-1]+offset(offsetvar+log(w)), subset=w!=0, method="breslow")$coef
 	update_s <-smsurv(Time,Status,X,beta,w,model)$survival}
 	if(model == "aft") {
-	update_beta <- optim(rep(0,ncol(X)), smrank, Time=Time,X=X,n=n,w=w,Status=Status,method="Nelder-Mead",control=list(reltol=0.0001,maxit=500))$par
+	update_beta <- optim(rep(0,ncol(X)), rank, Time=Time,X=X,n=n,w=w,Status=Status,method="Nelder-Mead",control=list(reltol=0.0001,maxit=500))$par
       	update_s <- smsurv(error,Status,X,beta,w,model)$survival}
 	convergence<-sum(c(update_cureb-b,update_beta-beta)^2)+sum((s-update_s)^2)
 		b <- update_cureb
